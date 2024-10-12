@@ -2,6 +2,7 @@ package com.OnlineLibrary.System.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,11 @@ public class BookService {
 				.filter(book->book.getAuthor()!=null)
 				.collect(Collectors.groupingBy(book->book.getAuthor().getFirstName()+" "+ book.getAuthor().getLastName(),
 						Collectors.counting()));
+	}
+
+	public Optional<Book> findBook(Long bookId) {
+		Optional<Book> book= bookRepository.findById(bookId);
+		return book;
 	}
 	
 	

@@ -2,18 +2,23 @@ package com.OnlineLibrary.System.Controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.OnlineLibrary.System.Dto.ResponseDto;
 import com.OnlineLibrary.System.Entity.Book;
 import com.OnlineLibrary.System.Service.BookService;
 
@@ -23,6 +28,10 @@ public class BookController {
 	
 	@Autowired
 	private BookService bookService;
+	@Autowired
+	private ResponseDto responseDto;
+	
+	
 	@PostMapping("/insert")
 	public ResponseEntity<Book> insertBook(@RequestBody Book book){
 		bookService.saveBook(book);
@@ -39,20 +48,35 @@ public class BookController {
 		return bookService.getBookById(id);
 	}
 	
-	@GetMapping("/Author")
-	public ResponseEntity<List<Book>> getBooksByAuthor(@RequestParam String firstName){
-		List<Book> books=bookService.getBooksByAuthor(firstName);
-		if(books.isEmpty()) {
-			return ResponseEntity.noContent().build();
-		}
-		return ResponseEntity.ok(books);
-	}
+	@PutMapping("/update/{bookId}")
+    public ResponseEntity updateBook(@RequestBody Book book, @PathVariable Long bookId){
+        Optional<Book> optional= bookService.findBook(bookId);
+        if (!optional.isPresent()){
+            responseDto.setMessage("Invalid ID!!, Please enter valid ID");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseDto);
+        }
+        Book bookDB =optional.get();
+        bookDB.setTitle(book.getTitle());
+        bookDB.setAuthor(book.getAuthor());
+        bookDB.setGenre(book.getGenre());
+        bookDB.setLanguage(book.getLanguage());
+        bookDB.setPageCount(book.getPageCount());
+        bookDB.setPrice(book.getPrice());
+        bookDB.setPublisher(book.getPublisher());
+        bookDB.setRating(book.getRating());
+        bookService.saveBook(bookDB);
+        responseDto.setMessage("Book Details Updated");
+        return ResponseEntity.status(HttpStatus.OK).body(responseDto);
+        }
+	
+	
 	
 	@DeleteMapping("/delete/{id}")
 	public String deleteBook(@PathVariable Long id) {
 		bookService.delectBook(id);
 		return "Book deleted Successfully";
 	}
+	
 	@GetMapping("/search")
 	public ResponseEntity<List<Book>> searchBooks(
 			@RequestParam(required=false)String title,
@@ -88,5 +112,7 @@ public class BookController {
 		}
 		
 	}
+	
+	
 
 }
