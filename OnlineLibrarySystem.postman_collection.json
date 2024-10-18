@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "b5341bf2-b898-4a35-bc4b-87279e2954bd",
+		"name": "OnlineLibrarySystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29507904"
+	},
+	"item": [
+		{
+			"name": "http://localhost:1108/api/book/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1108/api/book/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"book",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/publisher/getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1108/api/publisher/getAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"publisher",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/publisher/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1108/api/publisher/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"publisher",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/book/delete/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1108/api/book/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"book",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/book/Author?firstName=Robin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1108/api/book/Author?firstName=Robin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"book",
+						"Author"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "Robin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/book/search?title=Palace of illusion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1108/api/book/search?title=Palace of illusion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"book",
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Palace of illusion"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/book/sort",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1108/api/book/sort",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"book",
+						"sort"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/book/report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1108/api/book/report",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"book",
+						"report"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/author/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"Chitra\",\r\n    \"lastName\":\"Benerjee\",\r\n    \"nationality\":\"Indian\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1108/api/author/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"author",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/publisher/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Penguin books\",\r\n    \"address\":\"New york\",\r\n    \"contactNumber\":\"123-456-7890\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1108/api/publisher/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"publisher",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/book/insert",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Krishnas key\",\r\n    \"genre\":\"friction\",\r\n    \"price\":300,\r\n    \"language\":\"English\",\r\n    \"pageCount\":300,\r\n    \"rating\":4.5,\r\n    \"author\":{\r\n        \"authorId\":2\r\n\r\n    },\r\n    \"publisher\":{\r\n        \"publisherId\":1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1108/api/book/insert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"book",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/book/getAllBooks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1108/api/book/getAllBooks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"book",
+						"getAllBooks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/author/getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1108/api/author/getAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"author",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/author/52",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1108/api/author/52",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"author",
+						"52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/author/update/2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"firstName\": \"amish\",\r\n    \"lastName\": \"shah\",\r\n    \"nationality\": \"Indian\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1108/api/author/update/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"author",
+						"update",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1108/api/book/update/2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\": 2,\r\n    \"title\": \"Palace of illusion\",\r\n    \"author\": {\r\n        \"authorId\": 52,\r\n        \"firstName\": \"Chitra\",\r\n        \"lastName\": \"Benerjee\",\r\n        \"nationality\": \"Indian\"\r\n    },\r\n    \"publisher\": {\r\n        \"publisherId\": 1,\r\n        \"name\": \"Penguin books\",\r\n        \"address\": \"New york\",\r\n        \"contactNumber\": \"123-456-7890\"\r\n    },\r\n    \"price\": 500.0,\r\n    \"pageCount\": 500,\r\n    \"language\": \"English\",\r\n    \"rating\": 4.5,\r\n    \"genre\": \"non-friction\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1108/api/book/update/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1108",
+					"path": [
+						"api",
+						"book",
+						"update",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
