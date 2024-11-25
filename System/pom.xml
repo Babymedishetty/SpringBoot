@@ -34,10 +34,26 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		   <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+      <version>2.6.0</version>
+   </dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-junit-jupiter</artifactId>
+    <scope>test</scope>
+</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -51,18 +67,27 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <scope>provided</scope>
+</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
-
-	<build>
+		<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <scope>test</scope>
+</dependency>
+ </dependencies>
+		 
+<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -76,7 +101,28 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.8</version>
+    <configuration>
+        <excludes>
+			 <exclude>/src/main/java/com/OnlineLibrary/System/SystemApplication.main()</exclude>
+            <exclude>/src/main/java/com/OnlineLibrary/System/Entity/Book.java</exclude>
+            <exclude>/src/main/java/com/OnlineLibrary/System/Entity/Author.java</exclude>
+           <exclude> /src/main/java/com/OnlineLibrary/System/Entity/Publisher.java</exclude>
+            <exclude>/src/test/java/com/OnlineLibrary/System/SystemApplicationTest.java</exclude>
+        </excludes>
+    </configuration>
+    <executions>
+        <execution>
+            <id>jacoco-report</id>
+            <goals>
+                <goal>report</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
 		</plugins>
 	</build>
-
 </project>

@@ -12,9 +12,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Publisher {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -25,56 +27,20 @@ public class Publisher {
 	private String address;
 	
 	private String contactNumber;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy="publisher",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Book>books;
-	public Long getPublisherId() {
-		return publisherId;
-	}
-	public void setPublisherId(Long publisherId) {
-		this.publisherId = publisherId;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getContactNumber() {
-		return contactNumber;
-	}
-	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
-	}
-	public List<Book> getBooks() {
-		return books;
-	}
-	public void setBooks(List<Book> books) {
-		this.books = books;
-	}
-	public Publisher(Long publisherId, String name, String address, String contactNumber, List<Book> books) {
-		super();
-		this.publisherId = publisherId;
-		this.name = name;
-		this.address = address;
-		this.contactNumber = contactNumber;
-		this.books = books;
-	}
-	@Override
-	public String toString() {
-		return "Publisher [publisherId=" + publisherId + ", name=" + name + ", address=" + address + ", contactNumber="
-				+ contactNumber + ", books=" + books + "]";
-	}
-	public Publisher() {
-		
-	}
 	
 	
+	
+	
+	
+	
+	
+	
+	  public Publisher(String name) {
+	        this.name = name;
+	    }
 
 }

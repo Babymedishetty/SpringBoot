@@ -9,13 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.OnlineLibrary.System.Entity.Book;
+import com.OnlineLibrary.System.Exception.BookNotFoundException;
+
 import com.OnlineLibrary.System.Repository.BookRepository;
 
 @Service
 public class BookService {
 	
-	@Autowired
-	private BookRepository bookRepository;
+	 private final BookRepository bookRepository;
+	 @Autowired  
+	    public BookService(BookRepository bookRepository) {
+	        this.bookRepository = bookRepository;
+	    }
+	 
 
 	public void saveBook(Book book) {
 		bookRepository.save(book);
@@ -27,7 +33,7 @@ public class BookService {
 	}
 
 	public Book getBookById(Long id) {
-		return bookRepository.findById(id).orElse(null);
+		return bookRepository.findById(id).orElseThrow(()-> new BookNotFoundException(" Book not found " ));
 	}
 	
 	public List<Book> getBooksByAuthor(String firstName) {
@@ -47,7 +53,7 @@ public class BookService {
 				.filter(book->(title==null || book.getTitle().equalsIgnoreCase(title)))
 				.filter(book->(author==null || (book.getAuthor()!=null && book.getAuthor().getFirstName().equalsIgnoreCase(author))))
 				.filter(book->(publisher==null || (book.getPublisher()!=null && book.getPublisher().getName().equalsIgnoreCase(publisher))))
-				.collect(Collectors.toList());
+				.toList();
 		
 	}
 
@@ -55,7 +61,7 @@ public class BookService {
 		 
 		return bookRepository.findAll().stream()
 				.sorted((book1,book2)->book1.getTitle().compareToIgnoreCase(book2.getTitle()))
-				.collect(Collectors.toList());
+				.toList();
 	}
 
 	public Map<String, Long> getBookCountByAuthor() {
@@ -66,17 +72,9 @@ public class BookService {
 						Collectors.counting()));
 	}
 
+	
 	public Optional<Book> findBook(Long bookId) {
-		Optional<Book> book= bookRepository.findById(bookId);
-		return book;
+		return bookRepository.findById(bookId);
+		 
 	}
-	
-	
-
-	
-
-	
-
-	
-
 }
